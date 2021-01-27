@@ -1,5 +1,5 @@
 //Допилите код функции changeClass, которая парсит все стили страницы в поисках заданного класса, а затем меняет атрибуты стиля этого класса
-
+/* 
 let changeClass = ( classname, styleString ) => ( 
 //   ...
 ).length > 0 ? console.log ( "found" ) : 
@@ -8,13 +8,13 @@ let changeClass = ( classname, styleString ) => (
     ).textContent = `.${classname} {${styleString}}`
 //После вызова функции:
 
-changeClass ( "second-level-menu", "background-color: red!important;" )
+changeClass ( "second-level-menu", "background-color: red!important;" ) */
 //в консоли страницы, где есть элементы с классом second-level-menu, у всех элементов этого класса цвет фона должен измениться на красный
 
 // Решение данного задание доступно здесь https://github.com/garevna/js-course/wiki/lesson-08-samples
-/* let changeClass = ( classname, styleString ) => ( Array.from ( document.styleSheets )
-    .filter ( sheet => !sheet.href )
-        .map (
+let changeClass = ( classname, styleString ) => ( Array.from ( document.styleSheets ) //создаем из таблицы стилей документа анономный массив
+    .filter ( sheet => !sheet.href ) // к каждому элементу массива применяем фильтр (фильтруем атрибуты не содержащие ссылок)  и получаем массив на выходе
+        .map (  ///к элементам последнего массива применяем функцию
             sheet => Array.from ( sheet.cssRules )
                     .filter ( rule => rule.selectorText === `.{classname}` )
         )
@@ -27,4 +27,4 @@ changeClass ( "second-level-menu", "background-color: red!important;" )
         document.createElement ( "style" )
     ).textContent = `.${classname} {${styleString}}`
 
-changeClass ( "graf", "background-color: red!important;" ) */
+changeClass ( "graf", "background-color: red!important;" )
